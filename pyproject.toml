@@ -1,0 +1,14 @@
+[project]
+name = "clipboard-manager"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.2.4",
+    "opencv-python>=4.11.0.86",
+    "pillow>=11.1.0",
+    "pyqt6>=6.8.1",
+    "pyzbar>=0.1.9",
+    "qrcode>=8.0",
+]

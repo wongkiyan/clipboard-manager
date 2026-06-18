@@ -11,6 +11,8 @@ from modules import load_module
 from modules import list_module
 from modules import clear_module
 from modules import slash_module
+from modules import qrcode_module
+from cbm import main
 
 request_functions = {
     "SAVE" : save_module.run,
@@ -18,12 +20,16 @@ request_functions = {
     "LIST" : list_module.run,
     "CLEAR" : clear_module.run,
     "SLASH" : slash_module.run,
+    "QRCODE": qrcode_module.run,
 }
 
 def handle_request():
     if not os.path.exists(Configs.PROGRAM_DATA_PATH):
         os.makedirs(Configs.PROGRAM_DATA_PATH)
         print("!!! Please run the setup.bat for the initial usage. !!!")
+
+    if len(sys.argv) == 1:
+        main()
 
     if len(sys.argv) >= 2:
         request_type = sys.argv[1].upper()

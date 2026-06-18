@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>images/PixelPerfect_settings.png</file>
+    <file>images/IconsBox_slash.png</file>
+    <file>images/kawalanicon_qrcode.png</file>
+    <file>images/PixelPerfect_download.png</file>
+    <file>images/PixelPerfect_search.png</file>
+  </qresource>
+</RCC>
