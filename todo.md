@@ -8,5 +8,9 @@
 
 - [x] Add slash module (Completed on: 2023-10-03)
 
+- [x] detect slash in txtClipboard
+- [x] Disable button for a second
+
 - [ ] Improve code
 - [ ] Save image function
+- [ ] Add New Function: Google image search

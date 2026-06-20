@@ -132,7 +132,7 @@ QPushButton:disabled {
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/icons/images/PixelPerfect_search.png</pixmap>
+          <pixmap resource="images.qrc">:/images/PixelPerfect_search.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -339,7 +339,7 @@ QPushButton:disabled {
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/icons/images/PixelPerfect_download.png</normaloff>:/icons/images/PixelPerfect_download.png</iconset>
+               <normaloff>:/images/PixelPerfect_download.png</normaloff>:/images/PixelPerfect_download.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -422,7 +422,7 @@ QPushButton:disabled {
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/icons/images/IconsBox_slash.png</normaloff>:/icons/images/IconsBox_slash.png</iconset>
+               <normaloff>:/images/IconsBox_slash.png</normaloff>:/images/IconsBox_slash.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -511,7 +511,7 @@ QPushButton:disabled {
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/icons/images/kawalanicon_qrcode.png</normaloff>:/icons/images/kawalanicon_qrcode.png</iconset>
+               <normaloff>:/images/kawalanicon_qrcode.png</normaloff>:/images/kawalanicon_qrcode.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -603,7 +603,7 @@ QPushButton:disabled {
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/icons/images/PixelPerfect_settings.png</normaloff>:/icons/images/PixelPerfect_settings.png</iconset>
+               <normaloff>:/images/PixelPerfect_settings.png</normaloff>:/images/PixelPerfect_settings.png</iconset>
              </property>
              <property name="iconSize">
               <size>
