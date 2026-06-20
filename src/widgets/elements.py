@@ -1,8 +1,9 @@
 
 import shelve
 from PyQt6.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
-from PyQt6.QtCore import QTimer, pyqtSignal
+from PyQt6.QtCore import QTimer, pyqtSignal, Qt
 from src import configs
+
 
 class NotificationWidget(QWidget):
     # Define a custom signal that emits a message
@@ -66,30 +67,43 @@ class NotificationWidget(QWidget):
         self.setVisible(False)
         self.timer.stop()
 
-
 class CustomListItem(QWidget):
     def __init__(self, text, parent_list, notification_signal):
         super().__init__()
-        self.parent_list = parent_list  # Reference to the QListWidget
+        self.parent_list = parent_list
         self.notification_signal = notification_signal
 
-        # Create label to display text
+        # 1. 建立文字標籤，並開啟自動換行（Word Wrap）
         self.label = QLabel(text)
+        self.label.setWordWrap(True)  # 讓長文字可以自動換行，不會被切掉
 
-        # Create remove button
+        # 2. 建立刪除按鈕
         self.remove_btn = QPushButton("❌")
-        self.remove_btn.setFixedSize(30, 30)  # Adjust button size
+        self.remove_btn.setFixedSize(30, 30)
         self.remove_btn.clicked.connect(self.remove_item)
+        self.remove_btn.setVisible(False)
 
-        # Layout
+        # 3. 核心修正：配置排版佈局
         layout = QHBoxLayout()
-        layout.addWidget(self.label)
-        layout.addWidget(self.remove_btn)
-        layout.setContentsMargins(5, 5, 5, 5)
-        layout.setStretch(0, 1)  # Stretch the label to take available space
-        layout.setStretch(1, 0)  # Don't stretch the delete button
+
+        # 🚀 修正問題一：將 label 與 remove_btn 垂直置中對齊（Qt.AlignmentFlag.AlignVCenter）
+        layout.addWidget(self.label, alignment=Qt.AlignmentFlag.AlignVCenter)
+        layout.addWidget(
+            self.remove_btn, alignment=Qt.AlignmentFlag.AlignVCenter)
+
+        layout.setContentsMargins(8, 8, 8, 8)  # 略為增加內邊距，看起來更舒適
+        layout.setStretch(0, 1)  # 讓標籤佔滿剩餘空間
+        layout.setStretch(1, 0)  # 按鈕不拉伸
         layout.setSpacing(10)
         self.setLayout(layout)
+
+    def enterEvent(self, event):
+        self.remove_btn.setVisible(True)
+        super().enterEvent(event)
+
+    def leaveEvent(self, event):
+        self.remove_btn.setVisible(False)
+        super().leaveEvent(event)
 
     def remove_item(self):
         shelf = shelve.open(configs.SHELF_DATA_PATH)
@@ -111,5 +125,4 @@ class CustomListItem(QWidget):
             row = self.parent_list.row(item)
             self.parent_list.takeItem(row)
 
-        # QMessageBox.information(self, "Item Removed","The selected item has been removed.")
         self.notification_signal.emit("The selected item has been removed.")
